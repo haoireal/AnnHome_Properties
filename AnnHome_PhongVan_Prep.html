@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ann Home – Cẩm nang phỏng vấn Sales Admin</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #f5f5f3; color: #1a1a1a; font-size: 14px; line-height: 1.6; }
+  .container { max-width: 700px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 20px; font-weight: 600; color: #1D9E75; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #888; margin-bottom: 20px; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .tab { font-size: 12.5px; padding: 6px 14px; border-radius: 20px; border: 1px solid #ccc; cursor: pointer; color: #666; background: #fff; transition: all .15s; }
+  .tab.active { background: #1D9E75; color: #fff; border-color: #1D9E75; font-weight: 500; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+  .section-title { font-size: 11px; font-weight: 600; color: #888; letter-spacing: .07em; text-transform: uppercase; border-bottom: 1px solid #e0e0e0; padding-bottom: 5px; margin: 0 0 12px; }
+  .card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 14px 16px; margin: 0 0 10px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin: 0 0 14px; }
+  .metric { background: #f5f5f3; border-radius: 8px; padding: 10px 12px; }
+  .metric-label { font-size: 11px; color: #888; margin-bottom: 3px; }
+  .metric-value { font-size: 18px; font-weight: 600; color: #1a1a1a; }
+  .metric-sub { font-size: 11px; color: #888; margin-top: 2px; }
+  .item { display: flex; gap: 8px; align-items: flex-start; margin: 8px 0; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .dt { background: #1D9E75; } .da { background: #EF9F27; } .db { background: #378ADD; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .mini-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 12px; }
+  .mini-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .mini-desc { font-size: 12px; color: #666; }
+  .tip { border-radius: 8px; padding: 10px 14px; margin: 6px 0; font-size: 13px; line-height: 1.5; }
+  .tip-g { background: #E1F5EE; color: #085041; border-left: 3px solid #1D9E75; }
+  .tip-a { background: #FAEEDA; color: #633806; border-left: 3px solid #EF9F27; }
+  .tip-r { background: #FCEBEB; color: #501313; border-left: 3px solid #E24B4A; }
+  .qa-block { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; margin: 0 0 8px; overflow: hidden; }
+  .qa-q { padding: 11px 14px; font-size: 13px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; user-select: none; }
+  .qa-q:hover { background: #f5f5f3; }
+  .qa-arr { color: #888; flex-shrink: 0; }
+  .qa-a { display: none; padding: 0 14px 12px; font-size: 12.5px; color: #555; line-height: 1.65; border-top: 1px solid #eee; padding-top: 10px; }
+  @media (max-width: 480px) { .row2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Ann Home – Cẩm nang phỏng vấn</h1>
+  <p class="subtitle">Sales Admin – Dự án Bất động sản • Tổng hợp thông tin & mẹo phỏng vấn</p>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('about',this)">Về Ann Home</div>
+    <div class="tab" onclick="showTab('culture',this)">Văn hoá</div>
+    <div class="tab" onclick="showTab('questions',this)">Câu hỏi PV</div>
+    <div class="tab" onclick="showTab('tips',this)">Mẹo vào được</div>
+  </div>
+
+  <!-- TAB 1 -->
+  <div class="panel active" id="tab-about">
+    <div class="section-title">Hồ sơ doanh nghiệp</div>
+    <div class="card-grid">
+      <div class="metric"><div class="metric-label">Thành lập</div><div class="metric-value">2017</div><div class="metric-sub">8+ năm hoạt động</div></div>
+      <div class="metric"><div class="metric-label">Trụ sở chính</div><div class="metric-value">Thủ Đức</div><div class="metric-sub">122 Nguyễn Hoàng, P. An Phú</div></div>
+      <div class="metric"><div class="metric-label">Chi nhánh</div><div class="metric-value">4 VP</div><div class="metric-sub">HCM · Thảo Điền · HN · ĐN</div></div>
+      <div class="metric"><div class="metric-label">Vị thế</div><div class="metric-value">F1</div><div class="metric-sub">Đại lý hạng Vàng Vinhomes</div></div>
+    </div>
+
+    <div class="section-title">Phân phối chính thức (F1)</div>
+    <div class="card">
+      <div class="item"><div class="dot dt"></div><div><strong>Vinhomes</strong> — Grand Park, The Beverly Solari, Glory Heights, Hải Vân Bay, Cần Giờ… (sản phẩm chủ lực)</div></div>
+      <div class="item"><div class="dot db"></div><div><strong>Masterise Homes</strong> — Masteri Centre Point, Lumiere Boulevard, The Global City</div></div>
+      <div class="item"><div class="dot da"></div><div><strong>Vinpearl</strong> — BĐS nghỉ dưỡng Phú Quốc, Nha Trang, MAIA Hồ Tràm</div></div>
+      <div style="margin-top:10px;font-size:12px;color:#888;border-top:1px solid #eee;padding-top:8px">→ Là đại lý F1 trực tiếp: không qua trung gian, giỏ hàng lớn, chính sách ưu đãi tốt hơn F2/F3. Đội sales có lợi thế cạnh tranh cao.</div>
+    </div>
+
+    <div class="section-title">Thành tích nổi bật</div>
+    <div class="card">
+      <div class="item"><div class="dot dt"></div><div><strong>TOP 10 đại lý xuất sắc nhất Vinhomes miền Nam</strong> — tháng 11/2024 (được Vinhomes vinh danh chính thức)</div></div>
+      <div class="item"><div class="dot dt"></div><div>Đại lý hạng Vàng Vinhomes — góp phần đưa Vinhomes Grand Park đạt hàng nghìn ô cửa sáng đèn</div></div>
+      <div class="item"><div class="dot dt"></div><div>Vượt qua nhiều chu kỳ biến động BĐS và duy trì phát triển ổn định từ 2017 đến nay</div></div>
+    </div>
+
+    <div class="section-title">Định hướng thương hiệu</div>
+    <div class="tip tip-g"><strong>"An tâm chọn — Sống An nhiên"</strong><br>Lấy chữ <em>An</em> làm gốc: An tâm cho khách hàng trong mỗi giao dịch. Đây là giá trị bạn nên nhắc đến khi phỏng vấn, ví dụ: "Em muốn góp phần mang lại sự an tâm cho khách hàng qua những hồ sơ được xử lý chính xác và đúng hạn."</div>
+  </div>
+
+  <!-- TAB 2 -->
+  <div class="panel" id="tab-culture">
+    <div class="section-title">5 từ khoá văn hoá Ann Home</div>
+    <div class="row2">
+      <div class="mini-card"><div class="mini-title" style="color:#1D9E75">Startup</div><div class="mini-desc">Cởi mở, nhịp nhanh, không rào cản thứ bậc cứng nhắc. Mỗi người tự chịu trách nhiệm.</div></div>
+      <div class="mini-card"><div class="mini-title" style="color:#185FA5">Trẻ trung</div><div class="mini-desc">Phần lớn Gen Z & Millennial. Không khí vui vẻ, thoải mái — thể hiện qua hình ảnh nội bộ trên website.</div></div>
+      <div class="mini-card"><div class="mini-title" style="color:#854F0B">Đào tạo</div><div class="mini-desc">Training on job từ CĐT (Vinhomes, Masterise) và nội bộ. Được học TikTok & kỹ năng bán hàng.</div></div>
+      <div class="mini-card"><div class="mini-title" style="color:#A32D2D">Ghi nhận</div><div class="mini-desc">Thưởng nóng, vinh danh, thưởng dự án theo thành tích. Không chỉ lương cứng.</div></div>
+    </div>
+    <div class="mini-card" style="margin-bottom:10px"><div class="mini-title" style="color:#533AB7">Chủ động</div><div class="mini-desc">"Mỗi thành viên đều có trách nhiệm riêng của mình" — công ty không muốn người cần nhắc nhở từng việc nhỏ.</div></div>
+
+    <div class="section-title">Môi trường thực tế</div>
+    <div class="card">
+      <div class="item"><div class="dot dt"></div><div>Không gian mở, startup spirit — đồng đội "thông minh, tài năng và thân thiện sẵn sàng giúp đỡ"</div></div>
+      <div class="item"><div class="dot dt"></div><div>Ra quyết định nhanh — tuyển dụng theo kiểu "Phỏng vấn nhanh – Đi làm luôn"</div></div>
+      <div class="item"><div class="dot dt"></div><div>Team building, du lịch công ty, hoạt động ngoại khoá thường xuyên</div></div>
+      <div class="item"><div class="dot da"></div><div>Áp lực thực tế: khi có sự kiện mở bán lớn, công việc nhiều và nhịp nhanh hơn bình thường rõ rệt</div></div>
+      <div class="item"><div class="dot da"></div><div>Cần làm sáng thứ 7 và có thể phát sinh sự kiện cuối tuần khi cần</div></div>
+    </div>
+
+    <div class="section-title">Điều Ann Home coi trọng nhất</div>
+    <div class="tip tip-g"><strong>Chủ động & tự giác</strong> — Không cần sếp nhắc từng việc nhỏ. Ai tự nhận việc và hoàn thành sẽ được ghi nhận.</div>
+    <div class="tip tip-g"><strong>Học nhanh</strong> — Sản phẩm thay đổi liên tục theo từng đợt mở bán. Ai nắm thông tin nhanh sẽ hỗ trợ sales hiệu quả hơn.</div>
+    <div class="tip tip-a"><strong>Giao tiếp thân thiện</strong> — Admin làm việc trực tiếp với đội sales, CĐT và đại lý F2. Cần người vui vẻ, dễ tiếp cận, không kiệm lời.</div>
+  </div>
+
+  <!-- TAB 3 -->
+  <div class="panel" id="tab-questions">
+    <div class="section-title">Câu hỏi gần như chắc chắn sẽ được hỏi — bấm để xem gợi ý trả lời</div>
+
+    <div class="qa-block">
+      <div class="qa-q" onclick="toggleQ(this)">"Bạn biết gì về Ann Home và các dự án hiện tại?" <span class="qa-arr">▸</span></div>
+      <div class="qa-a"><strong>Đây là câu lọc số 1.</strong> Trả lời mẫu: <em>"Em biết Ann Home là đại lý F1 hạng Vàng của Vinhomes — hiện phân phối các dự án lớn như Vinhomes Hải Vân Bay tại Đà Nẵng và Glory Heights tại Grand Park. Ann Home vừa được Vinhomes vinh danh TOP 10 đại lý xuất sắc tháng 11/2024 — đây là điều em rất ấn tượng và muốn được đóng góp vào những thành tích như vậy với vai trò hỗ trợ đội sales."</em></div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q" onclick="toggleQ(this)">"Tại sao bạn chuyển từ luật sang Sales Admin BĐS?" <span class="qa-arr">▸</span></div>
+      <div class="qa-a">Đừng nói "vì lương cao hơn." Trả lời mẫu: <em>"Trong 2 năm làm pháp lý BĐS, em nhận ra mình thích nhịp làm việc nhanh của môi trường kinh doanh. Nền tảng luật giúp em review hợp đồng và booking nhanh và chính xác — đây là điểm em có thể mang lại giá trị ngay từ đầu cho đội sales Ann Home mà không cần đào tạo lại về pháp lý."</em></div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q" onclick="toggleQ(this)">"Mô tả một ngày làm việc của Sales Admin theo bạn hiểu?" <span class="qa-arr">▸</span></div>
+      <div class="qa-a">Trả lời mẫu: <em>"Buổi sáng cập nhật tình trạng giỏ hàng từ CĐT, thông báo thay đổi chính sách cho đội sales. Trong ngày xử lý booking, kiểm tra hợp đồng trước khi ký, lưu trữ chứng từ theo quy trình. Khi có sự kiện mở bán: in ấn tài liệu, chuẩn bị hậu cần, hỗ trợ lễ tân. Cuối ngày báo cáo tình trạng giao dịch cho quản lý."</em></div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q" onclick="toggleQ(this)">"Bạn xử lý thế nào khi sales yêu cầu gấp mà đang bận việc khác?" <span class="qa-arr">▸</span></div>
+      <div class="qa-a">Họ test khả năng ưu tiên và chịu áp lực. Trả lời mẫu: <em>"Em hỏi nhanh mức độ khẩn của cả hai, rồi quyết định thứ tự. Với việc đang dở, em đánh dấu bước đang làm để không làm lại. Nếu cả hai đều thực sự khẩn mà một mình không kịp, em chủ động báo quản lý — không tự ôm hết rồi làm sai cả hai."</em></div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q" onclick="toggleQ(this)">"Bạn biết Canva chưa?" <span class="qa-arr">▸</span></div>
+      <div class="qa-a">Nếu đã thử: <em>"Em đã tự tìm hiểu và thực hành tạo một vài mẫu flyer BĐS. Em sẵn sàng học thêm các template cụ thể của Ann Home."</em> Nếu chưa: <em>"Em chưa dùng nhiều nhưng đã xem qua và thấy giao diện khá trực quan. Em cam kết nắm được cơ bản trong 1 tuần đầu onboard."</em></div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q" onclick="toggleQ(this)">"Điểm mạnh và điểm yếu của bạn?" <span class="qa-arr">▸</span></div>
+      <div class="qa-a">Điểm mạnh gắn với công việc: <em>"Em cẩn thận với văn bản và có nền tảng pháp lý — giúp phát hiện lỗi hợp đồng trước khi ký. Em cũng quen dùng AI để xử lý nhanh hơn mà không giảm chất lượng."</em> Điểm yếu thành thật kèm giải pháp: <em>"Em chưa nhiều kinh nghiệm thiết kế ấn phẩm — nhưng đang chủ động học Canva để bổ sung."</em></div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q" onclick="toggleQ(this)">"Bạn muốn mức lương bao nhiêu?" <span class="qa-arr">▸</span></div>
+      <div class="qa-a">Trả lời mẫu: <em>"Em tham khảo mức phổ biến cho vị trí Sales Admin BĐS và biết Ann Home đăng 8–12M. Với kinh nghiệm pháp lý BĐS thực tế, em kỳ vọng mức cứng khoảng 9–10M. Điều em quan tâm không kém là phần hoa hồng hỗ trợ dự án và cơ hội phát triển lên SA Leader — em muốn gắn bó dài hạn hơn là tối ưu lương tháng đầu."</em></div>
+    </div>
+
+    <div class="qa-block">
+      <div class="qa-q" onclick="toggleQ(this)">"Bạn có câu hỏi nào cho chúng tôi không?" <span class="qa-arr">▸</span></div>
+      <div class="qa-a">Luôn hỏi ít nhất 1 câu: <em>"Ann Home đang tập trung vào dự án nào lớn nhất trong 6 tháng tới?"</em> hoặc <em>"Đội Sales Admin hiện tại có mấy người, em sẽ làm việc trực tiếp với ai?"</em> — cho thấy bạn đang đánh giá cơ hội, không phải van xin việc.</div>
+    </div>
+  </div>
+
+  <!-- TAB 4 -->
+  <div class="panel" id="tab-tips">
+    <div class="section-title">Checklist trước buổi phỏng vấn</div>
+    <div class="card">
+      <div class="item"><div class="dot dt"></div><div>Vào annhome.vn, đọc kỹ 2–3 dự án đang bán: tên dự án, vị trí, 1 điểm nổi bật (Vinhomes Hải Vân Bay Đà Nẵng, Glory Heights Grand Park, MAIA Hồ Tràm)</div></div>
+      <div class="item"><div class="dot dt"></div><div>Nhớ: Ann Home là đại lý F1 hạng Vàng Vinhomes, TOP 10 xuất sắc tháng 11/2024 — thể hiện bạn có nghiên cứu thực sự</div></div>
+      <div class="item"><div class="dot dt"></div><div>Mở Canva, tạo thử 1 mẫu flyer BĐS đơn giản — chỉ cần biết giao diện cơ bản để trả lời tự tin</div></div>
+      <div class="item"><div class="dot dt"></div><div>Chuẩn bị 1 câu chuyện cụ thể dùng cấu trúc STAR: tình huống xử lý hợp đồng/booking phức tạp hoặc hỗ trợ tổ chức sự kiện</div></div>
+      <div class="item"><div class="dot dt"></div><div>Mang theo CV bản in + sổ ghi chép nhỏ — cho thấy bạn cẩn thận và chuyên nghiệp</div></div>
+    </div>
+
+    <div class="section-title">Cách nói để ghi điểm mạnh</div>
+    <div class="tip tip-g"><strong>Nói về "hỗ trợ đội sales chốt deal" — không phải "làm giấy tờ"</strong><br>Ann Home muốn người hiểu vai trò của mình là giúp sales bán được hàng nhanh hơn. Dùng ngôn ngữ này thay vì nói nhập liệu hay lưu hồ sơ.</div>
+    <div class="tip tip-g"><strong>Nhấn vào lợi thế pháp lý độc đáo</strong><br>Nói thẳng: "Em có thể review hợp đồng và booking ngay mà không cần hỏi thêm — điều này giúp tiết kiệm thời gian cho cả đội." Đây là điểm không ứng viên nào khác có.</div>
+    <div class="tip tip-g"><strong>Thể hiện tinh thần chủ động cụ thể</strong><br>Khi hỏi "bạn sẽ làm gì tuần đầu?", đừng nói "chờ hướng dẫn". Nói: "Em sẽ chủ động đọc quy trình, hỏi đội sales cần hỗ trợ gì nhất và làm quen hệ thống giỏ hàng ngay ngày đầu tiên."</div>
+
+    <div class="section-title">Tuyệt đối tránh</div>
+    <div class="tip tip-r">Không nói "em chuyển sang BĐS vì lương luật thấp" — nghe thiếu định hướng và bị loại ngay.</div>
+    <div class="tip tip-r">Không biết gì về Vinhomes hay dự án Ann Home đang bán — lỗi nghiêm trọng nhất, bị loại chắc chắn.</div>
+    <div class="tip tip-r">Không nói "không biết Canva" rồi dừng lại — phải thêm "nhưng em đang học và sẽ nắm trong tuần đầu."</div>
+    <div class="tip tip-r">Không trả lời chung chung, dài dòng — Ann Home phỏng vấn nhanh (15–30 phút), cần ngắn gọn và có ví dụ cụ thể.</div>
+
+    <div class="section-title">Trang phục & logistics</div>
+    <div class="card">
+      <div class="item"><div class="dot dt"></div><div>Smart casual là chuẩn: áo sơ mi + quần tây/chân váy. Không cần vest nghiêm túc — công ty startup, trẻ.</div></div>
+      <div class="item"><div class="dot dt"></div><div>Đến trước 10 phút. Địa chỉ: 122 Nguyễn Hoàng, P. An Phú, TP. Thủ Đức (gần Vincom Mega Mall Thảo Điền).</div></div>
+      <div class="item"><div class="dot da"></div><div>HR phụ trách: Ms. Thu Hương (Trưởng phòng Nhân sự). Nếu cần liên hệ lại: huong.ngo@annhome.vn</div></div>
+    </div>
+  </div>
+
+</div>
+<script>
+function showTab(id, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  el.classList.add('active');
+}
+function toggleQ(el) {
+  const a = el.nextElementSibling;
+  const arr = el.querySelector('.qa-arr');
+  const showing = a.style.display === 'block';
+  a.style.display = showing ? 'none' : 'block';
+  arr.textContent = showing ? '▸' : '▾';
+}
+</script>
+</body>
+</html>
